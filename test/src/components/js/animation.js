@@ -117,7 +117,7 @@ function animationg(){
                 
                 vX*=-1;
                 vXb*=-1;
-                    debugger
+                    
                 // vY*=-1;
                 // vYb*=-1;
                  xB = x+(ball.radius+ballB.radius)
