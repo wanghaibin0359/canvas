@@ -1,6 +1,8 @@
 <template>
-  <div v-if="$messageConfirm.message">
-      <h1>{{$messageConfirm.message}}</h1>
+  <div>
+     <div class="navbar">
+         
+     </div>
       <button @click="confirm">确定</button>
        <button @click="cancel">取消</button>
   </div>
@@ -8,6 +10,13 @@
 
 <script>
 export default {
+    data(){
+        return {
+            content:[
+                {id:1,}
+            ]
+        }
+    },
     computed:{
      
     },
@@ -23,5 +32,5 @@ export default {
 </script>
 
 <style>
-
+  
 </style>

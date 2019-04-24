@@ -5,23 +5,8 @@ import App from './App'
 import router from './router'
 import ConfirmCom from '@/components/ConfirmCom'
 import $ from 'jquery' 
-Vue.config.productionTip = false
-
-function confirmPlug (V){
-  let obj = {message:""};
-  V.set(obj,'message');
-  
-  V.prototype.$confirm = function(message,confirmFn,cancelFn){
-    
-    obj.message= message;
-   
-    obj.message = message;
 
 
-  }
-
-}
-Vue.use(confirmPlug)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

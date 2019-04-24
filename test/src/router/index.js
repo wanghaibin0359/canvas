@@ -5,11 +5,10 @@ import ConfirmCom from '@/components/oneComponent'
 
 import sub from '@/components/sub'
 Vue.use(Router)
-Vue.component('ConfirmCom',ConfirmCom)
+
 export default new Router({
   mode: 'history',
   routes: [
-   
     {
       path: '/a',
       component: ConfirmCom
