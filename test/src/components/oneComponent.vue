@@ -1,6 +1,6 @@
 <template>
   <div class="child">
-    <ul ref='drag'>
+    <ul ref='drag' class='drag'>
       <li>我是第一条</li>
       <li>我是第二条</li>
       <li>我是第3条</li>
@@ -144,9 +144,15 @@ function GetDomByPosition(x,y) {
        console.log(this.$router)
     },
     mounted(){
-      this.drag = new drag(this.$refs.drag)
-      this.drag.init()
-    },
+    // this.drag = new drag(this.$refs.drag)
+    console.log( $(this.$refs.drag)) 
+    this.$nextTick(()=>{
+      $(()=>{
+        $('.drag').Tdrag();
+      })
+    })
+      // this.drag.init()
+     },
     methods:{
         go () {
        

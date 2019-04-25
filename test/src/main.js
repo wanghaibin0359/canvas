@@ -3,9 +3,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import ConfirmCom from '@/components/ConfirmCom'
 import $ from 'jquery' 
-
+import './jqplugs/Tdrag'
 
 /* eslint-disable no-new */
 new Vue({
