@@ -1,6 +1,6 @@
 <template>
   <div class="child">
-    <ul ref='drop'>
+    <ul ref='drag'>
       <li>我是第一条</li>
       <li>我是第二条</li>
       <li>我是第3条</li>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  function drop(ele){
+  function drag(ele){
     this.ele = ele;
     this.children = ele.children;
     this.targetEle=null;
@@ -26,10 +26,11 @@
     this.bindmouseup = this.onMoseUp.bind(this)
     this.bindmouseover = this.targetElemousemove.bind(this)
   }
-  drop.prototype={
+  drag.prototype={
     init () {
       this.ele.addEventListener('mousedown',this.bindmousedown)
-      this.ele.addEventListener('mousemove',this.bindmouseover)
+    
+     
       this.ele.addEventListener('mouseup',this.bindmouseup)
     },
     destory(){
@@ -55,9 +56,11 @@
       this.y = screenY- this.cheight
       this.cloneEle.style.left=this.x+"px"
       this.cloneEle.style.top=this.y+"px"
-        this.cloneEle.style.margin=0+"px"
-        this.cloneEle.style.pointerEvent='none'
-         document.addEventListener('mousemove',this.bindmousemove)
+      this.cloneEle.style.margin=0+"px"
+      this.cloneEle.style.pointerEvent='none'
+      document.addEventListener('mousemove',this.bindmousemove)
+      // this.ele.addEventListener('mousemove',this.bindmouseover)
+       $(this.ele).on('mousemove','li',this.bindmouseover)
     },
     onMosemove(e){
       if( !this.cloneEle){return}
@@ -79,7 +82,7 @@
     },
     targetElemousemove(e){
        if( !this.cloneEle){return}
-      
+      console.log(e)
        console.log(e.target)
     }
     
@@ -131,7 +134,7 @@ function GetDomByPosition(x,y) {
     name: 'child',
     data () {
       return {
-        drop:'',
+        drag:'',
         text:[{a:2},{a:3}]
       }
       
@@ -141,8 +144,8 @@ function GetDomByPosition(x,y) {
        console.log(this.$router)
     },
     mounted(){
-      this.drop = new drop(this.$refs.drop)
-      this.drop.init()
+      this.drag = new drag(this.$refs.drag)
+      this.drag.init()
     },
     methods:{
         go () {
