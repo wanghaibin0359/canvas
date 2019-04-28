@@ -33,7 +33,8 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   externals: {
-    'Tdrag': 'Tdrag'
+    'Tdrag': 'Tdrag',
+    'jquery-ui': 'jquery-ui'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],

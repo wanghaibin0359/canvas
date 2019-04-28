@@ -1,8 +1,34 @@
 <template>
   <div class="child">
     <ul ref='drag' class='drag'>
-      <li>我是第一条</li>
-      <li>我是第二条</li>
+      <li class='list'>我是第一条
+        <div class="sub_class ui-state-default">
+          1111asdfasfd
+        </div>
+         <div class="sub_class ui-state-default">
+          2222asdfasfd
+        </div>
+         <div class="sub_class ui-state-default">
+          3333asdfasfd
+        </div>
+         <div class="sub_class ui-state-default">
+          4444asdfasfd
+        </div>
+      </li>
+      <li class='list'>我是第2条
+          <div class="sub_class ui-state-default">
+          1111asdfasfd
+        </div>
+         <div class="sub_class ui-state-default">
+          2222asdfasfd
+        </div>
+         <div class="sub_class ui-state-default">
+          3333asdfasfd
+        </div>
+         <div class="sub_class ui-state-default">
+          4444asdfasfd
+        </div>
+      </li>
       <li>我是第3条</li>
       <li>我是第4条</li>
     </ul>
@@ -10,6 +36,7 @@
 </template>
 
 <script>
+
   function drag(ele){
     this.ele = ele;
     this.children = ele.children;
@@ -87,7 +114,7 @@
     }
     
   }
-function GetDomByPosition(x,y) {
+  function GetDomByPosition(x,y) {
     var sx =document.documentElement.scrollLeft;
     var sy =document.documentElement.scrollTop;
     var  dom =  document.elementFromPoint(x-sx, y-sy) ;
@@ -145,10 +172,36 @@ function GetDomByPosition(x,y) {
     },
     mounted(){
     // this.drag = new drag(this.$refs.drag)
-    console.log( $(this.$refs.drag)) 
     this.$nextTick(()=>{
       $(()=>{
-        $('.drag').Tdrag();
+        console.log($(".drag"))
+         $(".drag").sortable({
+      placeholder: "ui-state-highlight"
+    });
+        $( ".drag" ).disableSelection();
+
+    $(".list").sortable({
+      placeholder: "ui-state-highlight"
+    });
+        $( ".list" ).disableSelection();
+
+
+    //     $( "#sortable" ).sortable({
+    //   placeholder: "ui-state-highlight"
+    // });
+    // $( "#sortable" ).disableSelection();
+        // $('.drag>li').Tdrag({
+        //   scope:"",
+        //   pos:true,
+        //   dragChange:true,
+        //   moveClass:"tezml",
+        //    disable:true,
+        // });
+        // $('.list>.sub_class').Tdrag({
+        //   scope:"",
+        //   pos:true,
+        //   dragChange:true
+        // });
       })
     })
       // this.drag.init()
@@ -168,6 +221,7 @@ function GetDomByPosition(x,y) {
 
   }
   li{
+    float: left;
     width:200px;
     height: 40px;
     background: pink;
@@ -175,5 +229,10 @@ function GetDomByPosition(x,y) {
     line-height: 40px;
     margin-top:15px;
     cursor: pointer;
+  }
+  .sub_class{
+    width:100%;
+    border:1px solid black;
+    color:green
   }
 </style>

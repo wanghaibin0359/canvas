@@ -4,7 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import $ from 'jquery' 
+import 'jquery-ui/external/requirejs/require'
 import './jqplugs/Tdrag'
+import './jqplugs/jquery-ui'
 
 /* eslint-disable no-new */
 new Vue({
