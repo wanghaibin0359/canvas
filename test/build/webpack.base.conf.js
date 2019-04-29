@@ -34,7 +34,8 @@ module.exports = {
   },
   externals: {
     'Tdrag': 'Tdrag',
-    'jquery-ui': 'jquery-ui'
+    'jquery-ui': 'jquery-ui',
+    'sortable': 'sortable'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],

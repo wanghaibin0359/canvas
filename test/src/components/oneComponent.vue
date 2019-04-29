@@ -36,7 +36,7 @@
 </template>
 
 <script>
-
+import Sortable from 'sortablejs/Sortable'
   function drag(ele){
     this.ele = ele;
     this.children = ele.children;
@@ -167,44 +167,21 @@
       
     },
     created(){
-      console.log(this.$route)
-       console.log(this.$router)
+     
     },
     mounted(){
-    // this.drag = new drag(this.$refs.drag)
-    this.$nextTick(()=>{
-      $(()=>{
-        console.log($(".drag"))
-         $(".drag").sortable({
-      placeholder: "ui-state-highlight"
-    });
-        $( ".drag" ).disableSelection();
+      console.log(Sortable)
+      new Sortable(this.$refs.drag, {
+          animation: 150,
+          ghostClass: 'blue-background-class'
+      });
 
-    $(".list").sortable({
-      placeholder: "ui-state-highlight"
-    });
-        $( ".list" ).disableSelection();
-
-
-    //     $( "#sortable" ).sortable({
-    //   placeholder: "ui-state-highlight"
-    // });
-    // $( "#sortable" ).disableSelection();
-        // $('.drag>li').Tdrag({
-        //   scope:"",
-        //   pos:true,
-        //   dragChange:true,
-        //   moveClass:"tezml",
-        //    disable:true,
-        // });
-        // $('.list>.sub_class').Tdrag({
-        //   scope:"",
-        //   pos:true,
-        //   dragChange:true
-        // });
-      })
-    })
-      // this.drag.init()
+      let list = document.querySelectorAll('.list');
+        list.forEach(li=>{
+          new Sortable(li, {
+            animation: 150
+        });
+        })
      },
     methods:{
         go () {
