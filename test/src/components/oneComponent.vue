@@ -173,7 +173,10 @@ import Sortable from 'sortablejs/Sortable'
       console.log(Sortable)
       new Sortable(this.$refs.drag, {
           animation: 150,
-          ghostClass: 'blue-background-class'
+          ghostClass: 'blue-background-class',
+          onEnd (data) {
+            console.log(data)
+          }
       });
 
       let list = document.querySelectorAll('.list');
