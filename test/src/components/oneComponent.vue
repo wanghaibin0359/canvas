@@ -36,6 +36,7 @@
 </template>
 
 <script>
+
 import Sortable from 'sortablejs/Sortable'
   function drag(ele){
     this.ele = ele;
@@ -155,7 +156,6 @@ import Sortable from 'sortablejs/Sortable'
     return $dom;
 
 }
-
 
   export default {
     name: 'child',
