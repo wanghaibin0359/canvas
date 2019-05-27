@@ -7,11 +7,25 @@ import $ from 'jquery'
 import 'jquery-ui/external/requirejs/require'
 import './jqplugs/Tdrag'
 import './jqplugs/jquery-ui'
-
+var io = require("socket.io-client");
+var hostname = '127.0.0.1:3001'
+var socket = io(hostname)
 /* eslint-disable no-new */
-new Vue({
+var app={
   el: '#app',
   router,
   components: { App },
   template: '<App/>'
+}
+Vue.use(function(v){
+  v.prototype.request = function d(url,data,fn){
+    socket.emit('request',JSON.stringify(url+data),(...result)=>{
+      return fn(...result)
+    })
+  }
+})
+new Vue(app)
+
+socket.on('connect', function() {
+  Vue.prototype.socketid = this.id
 })

@@ -1,5 +1,6 @@
 <template>
   <div class="child">
+    <button @click='change'>click</button>
     <ul ref='drag' class='drag'>
       <li class='list'>我是第一条
         <div class="sub_class ui-state-default">
@@ -32,10 +33,12 @@
       <li>我是第3条</li>
       <li>我是第4条</li>
     </ul>
+    <Sub :data='data'></Sub>
   </div>
 </template>
 
 <script>
+
 import Sortable from 'sortablejs/Sortable'
   function drag(ele){
     this.ele = ele;
@@ -155,12 +158,13 @@ import Sortable from 'sortablejs/Sortable'
     return $dom;
 
 }
-
-
+import Sub from './sub'
   export default {
     name: 'child',
+    components:{Sub},
     data () {
       return {
+        data:{sk:1,sv:2},
         drag:'',
         text:[{a:2},{a:3}]
       }
@@ -173,7 +177,10 @@ import Sortable from 'sortablejs/Sortable'
       console.log(Sortable)
       new Sortable(this.$refs.drag, {
           animation: 150,
-          ghostClass: 'blue-background-class'
+          ghostClass: 'blue-background-class',
+          onEnd (data) {
+            console.log(data)
+          }
       });
 
       let list = document.querySelectorAll('.list');
@@ -184,6 +191,9 @@ import Sortable from 'sortablejs/Sortable'
         })
      },
     methods:{
+      change(){
+          this.data.sk=this.data.sk+1
+      },
         go () {
        
          this.$router.push('sub')

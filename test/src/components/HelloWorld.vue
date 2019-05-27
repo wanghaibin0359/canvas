@@ -4,6 +4,7 @@
    <div style="display:none;">
      <img ref="img" src="./1.jpg" alt="" width="500" height="500">
    </div>
+   <button @click='send'>发送请求</button>
     <button @click="start">开始</button><button style="margin-left:20px;" @click="stop">停止</button><br>
      <canvas ref='cv' width='500' height="500"></canvas>
   </div>
@@ -78,6 +79,12 @@ animate(cx,this.cv,10)
 
   },
   methods:{
+    send(){
+      this.request('data',{a:1},(...data)=>{
+        console.log(data)
+        return 'aaa'
+      })
+    },
     stop (){
 stop()
     },

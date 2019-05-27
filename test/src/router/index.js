@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import ConfirmCom from '@/components/oneComponent'
+import EchartDemo from '@/components/echartDemo'
 
 import sub from '@/components/sub'
 Vue.use(Router)
@@ -22,5 +23,10 @@ export default new Router({
       name: 'HelloWorld',
       component: HelloWorld
     },
+    {
+      path: '/e',
+      name: 'e',
+      component: EchartDemo
+    }
   ]
 })
